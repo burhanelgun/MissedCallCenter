@@ -1,4 +1,4 @@
-package com.burhan.missingcallcenter.repository;
+package com.burhan.missedcallcenter.repository;
 
 import org.springframework.stereotype.Repository;
 

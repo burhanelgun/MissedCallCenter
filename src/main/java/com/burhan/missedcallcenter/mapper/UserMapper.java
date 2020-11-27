@@ -1,7 +1,7 @@
-package com.burhan.missingcallcenter.mapper;
+package com.burhan.missedcallcenter.mapper;
 
-import com.burhan.missingcallcenter.dto.UserDto;
-import com.burhan.missingcallcenter.entity.UserEntity;
+import com.burhan.missedcallcenter.dto.UserDto;
+import com.burhan.missedcallcenter.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
 @Service

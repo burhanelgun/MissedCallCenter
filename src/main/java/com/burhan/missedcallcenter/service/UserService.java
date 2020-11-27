@@ -1,10 +1,10 @@
-package com.burhan.missingcallcenter.service;
+package com.burhan.missedcallcenter.service;
 
-import com.burhan.missingcallcenter.dto.SignupDto;
-import com.burhan.missingcallcenter.dto.UserDto;
-import com.burhan.missingcallcenter.entity.UserEntity;
-import com.burhan.missingcallcenter.mapper.UserMapper;
-import com.burhan.missingcallcenter.repository.UserRepository;
+import com.burhan.missedcallcenter.dto.SignupDto;
+import com.burhan.missedcallcenter.dto.UserDto;
+import com.burhan.missedcallcenter.entity.UserEntity;
+import com.burhan.missedcallcenter.mapper.UserMapper;
+import com.burhan.missedcallcenter.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.burhan.missingcallcenter.service;
+package com.burhan.missedcallcenter.service;
 
 import org.springframework.stereotype.Service;
 

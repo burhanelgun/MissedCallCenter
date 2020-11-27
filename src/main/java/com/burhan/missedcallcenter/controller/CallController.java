@@ -1,4 +1,4 @@
-package com.burhan.missingcallcenter.controller;
+package com.burhan.missedcallcenter.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

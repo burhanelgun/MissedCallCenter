@@ -1,4 +1,4 @@
-package com.burhan.missingcallcenter.dto;
+package com.burhan.missedcallcenter.dto;
 
 import lombok.Data;
 

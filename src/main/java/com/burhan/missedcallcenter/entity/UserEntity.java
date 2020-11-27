@@ -1,4 +1,4 @@
-package com.burhan.missingcallcenter.entity;
+package com.burhan.missedcallcenter.entity;
 
 import lombok.Data;
 

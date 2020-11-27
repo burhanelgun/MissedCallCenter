@@ -1,4 +1,4 @@
-package com.burhan.missingcallcenter.config;
+package com.burhan.missedcallcenter.config;
 
 import org.springframework.context.annotation.Configuration;
 

@@ -1,12 +1,4 @@
-package com.burhan.missingcallcenter.config;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.transaction.PlatformTransactionManager;
-
-import javax.sql.DataSource;
-import java.util.Properties;
+package com.burhan.missedcallcenter.config;
 
 public class HibernateConfig {
 

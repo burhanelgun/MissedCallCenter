@@ -1,9 +1,6 @@
-package com.burhan.missingcallcenter.dto;
+package com.burhan.missedcallcenter.dto;
 
 import lombok.Data;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 @Data
 public class UserDto {

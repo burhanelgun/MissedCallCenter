@@ -1,10 +1,10 @@
-package com.burhan.missingcallcenter;
+package com.burhan.missedcallcenter;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MissingcallcenterApplicationTests {
+class MissedCallCenterApplication {
 
     @Test
     void contextLoads() {

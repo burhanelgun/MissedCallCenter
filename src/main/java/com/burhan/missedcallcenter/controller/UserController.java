@@ -1,10 +1,10 @@
-package com.burhan.missingcallcenter.controller;
+package com.burhan.missedcallcenter.controller;
 
 import javax.validation.Valid;
 
-import com.burhan.missingcallcenter.dto.SignupDto;
-import com.burhan.missingcallcenter.dto.UserDto;
-import com.burhan.missingcallcenter.service.UserService;
+import com.burhan.missedcallcenter.dto.SignupDto;
+import com.burhan.missedcallcenter.dto.UserDto;
+import com.burhan.missedcallcenter.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
