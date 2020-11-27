@@ -1,4 +1,4 @@
-package com.burhan.missedcallcenter.service;
+package com.burhan.missedcallcenter.service.user;
 
 import com.burhan.missedcallcenter.dto.SignupDto;
 import com.burhan.missedcallcenter.dto.UserDto;
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
 
     UserRepository userRepository;
     UserMapper userMapper;
 
-    UserService(UserRepository userRepository, UserMapper userMapper){
+    UserServiceImpl(UserRepository userRepository, UserMapper userMapper){
         this.userRepository=userRepository;
         this.userMapper=userMapper;
     }

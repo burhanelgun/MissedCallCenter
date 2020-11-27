@@ -9,9 +9,9 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SwaggerConfig {
 
-    @Bean
+    /*@Bean
     public Docket swaggerDocket() {
         return new Docket(DocumentationType.SWAGGER_2).select()
                 .apis(RequestHandlerSelectors.basePackage("com.burhan.missedcallcenter")).build();
-    }
+    }*/
 }
