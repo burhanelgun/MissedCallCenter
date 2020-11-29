@@ -22,6 +22,7 @@ public class CallMapper {
         callDto.setCallerUserDto(userMapper.entityToDto(callEntity.getCallerUserEntity()));
         callDto.setCalledPhone(callEntity.getCalledPhone());
         callDto.setNotNotifiedCallCount(callEntity.getNotNotifiedCallCount());
+        callDto.setCallDate(callEntity.getCallDate());
 
         return callDto;
     }
@@ -32,6 +33,7 @@ public class CallMapper {
         callEntity.setCallerUserEntity(userMapper.dtoToEntity(callDto.getCallerUserDto()));
         callEntity.setCalledPhone(callDto.getCalledPhone());
         callEntity.setNotNotifiedCallCount(callDto.getNotNotifiedCallCount());
+        callEntity.setCallDate(callDto.getCallDate());
 
         return callEntity;
     }

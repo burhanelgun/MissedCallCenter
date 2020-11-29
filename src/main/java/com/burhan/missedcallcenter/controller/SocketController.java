@@ -25,7 +25,7 @@ public class SocketController {
 
     @MessageMapping("/connect")
     public void connect(Principal principal) throws Exception {
-        String notificationMessage = messageGeneratorService.generateMessageForMissedCalls(principal.getName());
+        String notificationMessage = messageGeneratorService.generateMessageForMissedCallNotification(principal.getName());
         notificationService.sendNotification(principal.getName(), notificationMessage);
     }
 

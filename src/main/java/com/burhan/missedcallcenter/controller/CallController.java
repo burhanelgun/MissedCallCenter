@@ -1,6 +1,7 @@
 package com.burhan.missedcallcenter.controller;
 
 import com.burhan.missedcallcenter.dto.CallDto;
+import com.burhan.missedcallcenter.dto.CreateCallDto;
 import com.burhan.missedcallcenter.service.call.CallService;
 import com.burhan.missedcallcenter.service.notification.NotificationService;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +23,8 @@ public class CallController {
     }
 
     @PostMapping("/call")
-    private ResponseEntity<CallDto> call(@Valid @RequestBody CallDto callDto) {
-        return callService.save(callDto);
+    private ResponseEntity<CallDto> call(@Valid @RequestBody CreateCallDto createCallDto) {
+        return callService.save(createCallDto);
     }
 
 

@@ -1,6 +1,7 @@
 package com.burhan.missedcallcenter.service.call;
 
 import com.burhan.missedcallcenter.dto.CallDto;
+import com.burhan.missedcallcenter.dto.CreateCallDto;
 import com.burhan.missedcallcenter.entity.CallEntity;
 import com.burhan.missedcallcenter.entity.UserEntity;
 import com.burhan.missedcallcenter.mapper.CallMapper;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +24,8 @@ public class CallServiceImpl implements CallService {
     UserMapper userMapper;
     NotificationService notificationService;
 
-    CallServiceImpl(CallRepository callRepository, CallMapper callMapper, UserMapper userMapper, NotificationService notificationService) {
+    CallServiceImpl(CallRepository callRepository, CallMapper callMapper, UserMapper userMapper,
+                    NotificationService notificationService) {
         this.callRepository = callRepository;
         this.callMapper = callMapper;
         this.userMapper = userMapper;
@@ -30,16 +33,16 @@ public class CallServiceImpl implements CallService {
     }
 
     @Override
-    public ResponseEntity<CallDto> save(CallDto callDto) {
+    public ResponseEntity<CallDto> save(CreateCallDto createCallDto) {
 
-        if (callDto.getCallerUserDto().getPhone() == null) {
+        if (createCallDto.getCallerUserDto().getPhone() == null) {
             //TO DO print error message
             return ResponseEntity.badRequest().build(); //There is not a phone number for caller user
         }
 
         Optional<CallEntity> callEntityOpt = callRepository
-                .findByCallerUserEntity_IdAndCalledPhone(callDto.getCallerUserDto().getId(),
-                        callDto.getCalledPhone());
+                .findByCallerUserEntity_IdAndCalledPhone(createCallDto.getCallerUserDto().getId(),
+                        createCallDto.getCalledPhone());
 
         //If there are already a call that has same caller and called users, than +1 increment the notNotifiedCallCount
         //TO DO, before that check called user is connected to web socket, if true, than do not increment only send
@@ -47,19 +50,21 @@ public class CallServiceImpl implements CallService {
         CallEntity callEntity;
         if (callEntityOpt.isPresent()) {
             callEntity = callEntityOpt.get();
+            //update the call call date(last call date)
+            callEntity.setCallDate(new Date());
             callEntity.setNotNotifiedCallCount(callEntity.getNotNotifiedCallCount() + 1);
         } else {
             //if there is not any call with input caller and called phone, then create and save new one
             callEntity = new CallEntity();
 
-            UserEntity callerUserEntity = userMapper.dtoToEntity(callDto.getCallerUserDto());
+            UserEntity callerUserEntity = userMapper.dtoToEntity(createCallDto.getCallerUserDto());
             callEntity.setCallerUserEntity(callerUserEntity);
-            callEntity.setCalledPhone(callDto.getCalledPhone());
-
+            callEntity.setCalledPhone(createCallDto.getCalledPhone());
+            callEntity.setCallDate(new Date());
             callEntity.setNotNotifiedCallCount(1);
         }
         callRepository.save(callEntity);
-        return ResponseEntity.ok(callDto);
+        return ResponseEntity.ok(callMapper.entityToDto(callEntity));
 
     }
 
@@ -86,6 +91,5 @@ public class CallServiceImpl implements CallService {
 
         return null;
     }
-
 
 }
