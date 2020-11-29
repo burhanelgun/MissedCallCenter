@@ -17,4 +17,5 @@ public interface UserService  {
 
     ResponseEntity<UserDto> savePhone(UserDto userDto);
 
+    ResponseEntity<UserDto> login(UserDto userDto);
 }

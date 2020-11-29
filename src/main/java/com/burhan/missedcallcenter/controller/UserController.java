@@ -5,11 +5,22 @@ import javax.validation.Valid;
 import com.burhan.missedcallcenter.dto.SignupDto;
 import com.burhan.missedcallcenter.dto.UserDto;
 import com.burhan.missedcallcenter.service.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+@EnableScheduling
 @RestController
 public class UserController {
 
@@ -31,4 +42,12 @@ public class UserController {
     {
         return userService.savePhone(userDto);
     }
+
+    @PostMapping("/login")
+    private ResponseEntity<UserDto> login(@Valid @RequestBody UserDto userDto)
+    {
+        return userService.login(userDto);
+    }
+
+
 }
