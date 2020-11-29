@@ -13,10 +13,6 @@ import org.springframework.stereotype.Controller;
 
 import java.security.Principal;
 
-/**
- * Created by VIRONOE on 05/04/2017.
- */
-
 @Controller
 public class GreetingController {
 
@@ -28,7 +24,7 @@ public class GreetingController {
         Greeting greeting = new Greeting();
         greeting.setContent("Hello !");
 
-        messagingTemplate.convertAndSendToUser("a", "/queue/reply", greeting);
+        messagingTemplate.convertAndSendToUser(message.getToUser(), "/queue/reply", greeting);
     }
 
 }

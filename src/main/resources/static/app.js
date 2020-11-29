@@ -16,15 +16,15 @@ function connect() {
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({
-            "user" : document.getElementById("login").value
         }
 
         , function (frame) {
             setConnected(true);
             console.log('Connected: ' + frame);
-            stompClient.subscribe('/user/queue/reply', function(greeting) {
+            stompClient.subscribe('/user/'+document.getElementById("login").value+'/queue/reply', function(greeting) {
                 showGreeting(JSON.parse(greeting.body).content);
             });
+
         });
 }
 
