@@ -1,7 +1,6 @@
 package com.burhan.missedcallcenter.service.call;
 
 import com.burhan.missedcallcenter.dto.CallDto;
-import com.burhan.missedcallcenter.dto.UserDto;
 import com.burhan.missedcallcenter.entity.CallEntity;
 import com.burhan.missedcallcenter.entity.UserEntity;
 import com.burhan.missedcallcenter.mapper.CallMapper;
@@ -16,28 +15,27 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CallServiceImpl implements CallService{
+public class CallServiceImpl implements CallService {
 
     CallRepository callRepository;
     CallMapper callMapper;
     UserMapper userMapper;
     NotificationService notificationService;
 
-    CallServiceImpl(CallRepository callRepository, CallMapper callMapper, UserMapper userMapper,NotificationService notificationService){
-        this.callRepository=callRepository;
-        this.callMapper=callMapper;
-        this.userMapper=userMapper;
-        this.notificationService=notificationService;
+    CallServiceImpl(CallRepository callRepository, CallMapper callMapper, UserMapper userMapper, NotificationService notificationService) {
+        this.callRepository = callRepository;
+        this.callMapper = callMapper;
+        this.userMapper = userMapper;
+        this.notificationService = notificationService;
     }
 
     @Override
     public ResponseEntity<CallDto> save(CallDto callDto) {
 
-        if(callDto.getCallerUserDto().getPhone()==null){
+        if (callDto.getCallerUserDto().getPhone() == null) {
             //TO DO print error message
             return ResponseEntity.badRequest().build(); //There is not a phone number for caller user
         }
-
 
         Optional<CallEntity> callEntityOpt = callRepository
                 .findByCallerUserEntity_IdAndCalledPhone(callDto.getCallerUserDto().getId(),
@@ -47,11 +45,10 @@ public class CallServiceImpl implements CallService{
         //TO DO, before that check called user is connected to web socket, if true, than do not increment only send
         // a socket message about the call, else increment +1 the notNotifiedCallCount
         CallEntity callEntity;
-        if(callEntityOpt.isPresent()){
+        if (callEntityOpt.isPresent()) {
             callEntity = callEntityOpt.get();
-            callEntity.setNotNotifiedCallCount(callEntity.getNotNotifiedCallCount()+1);
-        }
-        else{
+            callEntity.setNotNotifiedCallCount(callEntity.getNotNotifiedCallCount() + 1);
+        } else {
             //if there is not any call with input caller and called phone, then create and save new one
             callEntity = new CallEntity();
 
@@ -73,14 +70,14 @@ public class CallServiceImpl implements CallService{
                 .findAllByCalledPhone(calledPhone);
 
         List<CallEntity> callEntities;
-        if(callEntitiesOpt.isPresent()){
+        if (callEntitiesOpt.isPresent()) {
             List<CallDto> callDtoList = new ArrayList<>();
 
             callEntities = callEntitiesOpt.get();
 
-            for(CallEntity callEntity:callEntities){
+            for (CallEntity callEntity : callEntities) {
                 //if every missed call have already notified to user, do not notify again
-                if(callEntity.getNotNotifiedCallCount()!=0){
+                if (callEntity.getNotNotifiedCallCount() != 0) {
                     callDtoList.add(callMapper.entityToDto(callEntity));
                 }
             }

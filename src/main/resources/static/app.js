@@ -40,7 +40,7 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/hello", {
+    stompClient.send("/app/connect", {
     }, JSON.stringify({
         'name': document.getElementById("login").value,
         'toUser' : document.getElementById("login").value

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DeliveryReportServiceImpl implements DeliveryReportService{
+public class DeliveryReportServiceImpl implements DeliveryReportService {
 
     CallRepository callRepository;
     CallMapper callMapper;
@@ -21,12 +21,12 @@ public class DeliveryReportServiceImpl implements DeliveryReportService{
     MessageGeneratorService messageGeneratorService;
 
 
-    DeliveryReportServiceImpl(CallRepository callRepository,CallMapper callMapper,NotificationService notificationService
-    ,MessageGeneratorService messageGeneratorService){
-        this.callRepository=callRepository;
-        this.callMapper=callMapper;
-        this.notificationService=notificationService;
-        this.messageGeneratorService=messageGeneratorService;
+    DeliveryReportServiceImpl(CallRepository callRepository, CallMapper callMapper, NotificationService notificationService
+            , MessageGeneratorService messageGeneratorService) {
+        this.callRepository = callRepository;
+        this.callMapper = callMapper;
+        this.notificationService = notificationService;
+        this.messageGeneratorService = messageGeneratorService;
     }
 
     @Override
@@ -55,9 +55,9 @@ public class DeliveryReportServiceImpl implements DeliveryReportService{
     }
 
     private void sendAvailableNotification(List<CallEntity> callerEntities) {
-        for(CallEntity callEntity:callerEntities){
-            String message =messageGeneratorService.generateMessageForAvailableNotification(callEntity);
-            notificationService.sendNotification(callEntity.getCallerUserEntity().getPhone(),message);
+        for (CallEntity callEntity : callerEntities) {
+            String message = messageGeneratorService.generateMessageForAvailableNotification(callEntity);
+            notificationService.sendNotification(callEntity.getCallerUserEntity().getPhone(), message);
         }
     }
 }

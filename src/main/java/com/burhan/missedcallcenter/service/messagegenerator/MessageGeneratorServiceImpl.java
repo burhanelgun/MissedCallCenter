@@ -1,7 +1,6 @@
 package com.burhan.missedcallcenter.service.messagegenerator;
 
 import com.burhan.missedcallcenter.dto.CallDto;
-import com.burhan.missedcallcenter.dto.NotificationDto;
 import com.burhan.missedcallcenter.entity.CallEntity;
 import com.burhan.missedcallcenter.service.call.CallService;
 import org.springframework.context.MessageSource;
@@ -18,7 +17,7 @@ public class MessageGeneratorServiceImpl implements MessageGeneratorService {
 
     MessageGeneratorServiceImpl(CallService callService, MessageSource messageSource) {
         this.callService = callService;
-        this.messageSource=messageSource;
+        this.messageSource = messageSource;
     }
 
     @Override
@@ -26,7 +25,7 @@ public class MessageGeneratorServiceImpl implements MessageGeneratorService {
         String messageTheNumber = messageSource.getMessage("the.number", null, LocaleContextHolder.getLocale());
         String messageCall = callEntity.getCalledPhone();
         String messageIsNowAvailable = messageSource.getMessage("now.available", null, LocaleContextHolder.getLocale());
-        return messageTheNumber+" "+messageCall+" "+messageIsNowAvailable;
+        return messageTheNumber + " " + messageCall + " " + messageIsNowAvailable;
     }
 
     @Override
@@ -44,7 +43,7 @@ public class MessageGeneratorServiceImpl implements MessageGeneratorService {
 
     public String prepareNotificationContent(List<CallDto> callerCallDtoList) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (CallDto callerCallDto:callerCallDtoList){
+        for (CallDto callerCallDto : callerCallDtoList) {
             stringBuilder.append(callerCallDto);
         }
         return stringBuilder.toString();

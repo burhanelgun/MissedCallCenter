@@ -16,9 +16,9 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
     UserMapper userMapper;
 
-    UserServiceImpl(UserRepository userRepository, UserMapper userMapper){
-        this.userRepository=userRepository;
-        this.userMapper=userMapper;
+    UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     public ResponseEntity<UserDto> saveUser(SignupDto signupDto) {
@@ -32,24 +32,14 @@ public class UserServiceImpl implements UserService {
 
     public ResponseEntity<UserDto> savePhone(UserDto userDto) {
         Optional<UserEntity> userEntityOpt = userRepository.findById(userDto.getId());
-        if(userEntityOpt.isPresent()){
+        if (userEntityOpt.isPresent()) {
             UserEntity userEntity = userEntityOpt.get();
             userEntity.setPhone(userDto.getPhone());
             userRepository.save(userEntity);
             return ResponseEntity.ok(userDto);
-        }
-        else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @Override
-    public ResponseEntity<UserDto> login(UserDto userDto) {
-
-        return null;
-
-
-
-
-    }
 }

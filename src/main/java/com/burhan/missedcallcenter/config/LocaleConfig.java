@@ -17,14 +17,12 @@ import java.util.Locale;
 @Data
 public class LocaleConfig implements WebMvcConfigurer {
 
-
     @Bean(name = "localeResolver")
     public LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();
         slr.setDefaultLocale(Locale.US);
         return slr;
     }
-
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

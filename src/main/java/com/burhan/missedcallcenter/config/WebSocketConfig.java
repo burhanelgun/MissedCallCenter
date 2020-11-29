@@ -1,7 +1,5 @@
 package com.burhan.missedcallcenter.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
@@ -17,11 +15,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
-import org.springframework.web.socket.config.annotation.*;
-import org.springframework.web.socket.handler.TextWebSocketHandler;
-import org.springframework.web.socket.server.HandshakeHandler;
+import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +28,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/topic", "/queue" ,"/user");
+        config.enableSimpleBroker("/topic", "/queue", "/user");
         config.setApplicationDestinationPrefixes("/app");
         config.setUserDestinationPrefix("/user");
     }
@@ -48,21 +45,21 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
             @Override
             public Message<?> preSend(Message<?> message, MessageChannel channel) {
 
-                StompHeaderAccessor accessor =
-                        MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
+            StompHeaderAccessor accessor =
+                    MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
 
-                if (StompCommand.CONNECT.equals(accessor.getCommand())) {
-                    String user = accessor.getFirstNativeHeader("user");
-                    if (!StringUtils.isEmpty(user)) {
-                        List<GrantedAuthority> authorities = new ArrayList<>();
-                        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-                        Authentication auth = new UsernamePasswordAuthenticationToken(user, user, authorities);
-                        SecurityContextHolder.getContext().setAuthentication(auth);
-                        accessor.setUser(auth);
-                    }
+            if (StompCommand.CONNECT.equals(accessor.getCommand())) {
+                String user = accessor.getFirstNativeHeader("user");
+                if (!StringUtils.isEmpty(user)) {
+                    List<GrantedAuthority> authorities = new ArrayList<>();
+                    authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+                    Authentication auth = new UsernamePasswordAuthenticationToken(user, user, authorities);
+                    SecurityContextHolder.getContext().setAuthentication(auth);
+                    accessor.setUser(auth);
                 }
+            }
 
-                return message;
+            return message;
             }
         });
     }
