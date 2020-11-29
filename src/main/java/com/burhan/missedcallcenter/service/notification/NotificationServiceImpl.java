@@ -1,5 +1,6 @@
 package com.burhan.missedcallcenter.service.notification;
 
+import com.burhan.missedcallcenter.dto.Greeting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -12,6 +13,8 @@ public class NotificationServiceImpl implements NotificationService {
     MessageSource messageSource;
     SimpMessagingTemplate messagingTemplate;
 
+    
+
     NotificationServiceImpl(SimpMessagingTemplate messagingTemplate,MessageSource messageSource){
         this.messageSource=messageSource;
         this.messagingTemplate=messagingTemplate;
@@ -19,7 +22,13 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void sendNotification(String username) {
+
+
         String message = messageSource.getMessage("missed.calls", null, LocaleContextHolder.getLocale());
-        messagingTemplate.convertAndSendToUser(username, "/queue/reply", message);
+
+        Greeting greeting = new Greeting();
+        greeting.setContent(message);
+
+        messagingTemplate.convertAndSendToUser(username, "/queue/reply", greeting);
     }
 }

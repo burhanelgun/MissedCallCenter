@@ -16,6 +16,7 @@ function connect() {
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({
+            "user" : document.getElementById("login").value
         }
 
         , function (frame) {
@@ -23,7 +24,10 @@ function connect() {
             console.log('Connected: ' + frame);
             stompClient.subscribe('/user/'+document.getElementById("login").value+'/queue/reply', function(greeting) {
                 showGreeting(JSON.parse(greeting.body).content);
+
             });
+            console.log("denemelerrrrr");
+            sendName();
 
         });
 }
@@ -39,8 +43,8 @@ function disconnect() {
 function sendName() {
     stompClient.send("/app/hello", {
     }, JSON.stringify({
-        'name': $("#name").val(),
-        'toUser' : $("#name").val()
+        'name': document.getElementById("login").value,
+        'toUser' : document.getElementById("login").value
     }));
 }
 
@@ -54,5 +58,4 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#send" ).click(function() { sendName(); });
 });
