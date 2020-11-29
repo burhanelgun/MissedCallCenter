@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface NotificationService {
 
-    void sendNotification(String username);
-
-    String prepareNotificationContent(List<CallDto> callerCallDtoList);
+    void sendNotification(String username,String message);
 
 }

@@ -7,6 +7,7 @@ import com.burhan.missedcallcenter.entity.UserEntity;
 import com.burhan.missedcallcenter.mapper.CallMapper;
 import com.burhan.missedcallcenter.mapper.UserMapper;
 import com.burhan.missedcallcenter.repository.CallRepository;
+import com.burhan.missedcallcenter.service.notification.NotificationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +21,13 @@ public class CallServiceImpl implements CallService{
     CallRepository callRepository;
     CallMapper callMapper;
     UserMapper userMapper;
+    NotificationService notificationService;
 
-    CallServiceImpl(CallRepository callRepository, CallMapper callMapper, UserMapper userMapper){
+    CallServiceImpl(CallRepository callRepository, CallMapper callMapper, UserMapper userMapper,NotificationService notificationService){
         this.callRepository=callRepository;
         this.callMapper=callMapper;
         this.userMapper=userMapper;
+        this.notificationService=notificationService;
     }
 
     @Override
@@ -85,24 +88,6 @@ public class CallServiceImpl implements CallService{
         }
 
         return null;
-    }
-
-    @Override
-    public ResponseEntity<String> resetNotNotifiedCallCount(UserDto userDto) {
-        Optional<List<CallEntity>> callEntitiesOpt = callRepository
-                .findAllByCalledPhone(userDto.getPhone());
-
-        List<CallEntity> callEntities;
-        if (callEntitiesOpt.isPresent()) {
-
-            callEntities = callEntitiesOpt.get();
-            //reset missed call notification count
-            for (CallEntity callEntity : callEntities) {
-                callEntity.setNotNotifiedCallCount(0);
-            }
-            callRepository.saveAll(callEntities);
-        }
-        return ResponseEntity.ok("Report is successfully processed");
     }
 
 
