@@ -1,6 +1,7 @@
 package com.burhan.missedcallcenter.controller;
 
 import com.burhan.missedcallcenter.dto.CallDto;
+import com.burhan.missedcallcenter.dto.UserDto;
 import com.burhan.missedcallcenter.service.call.CallService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,5 +25,9 @@ public class CallController {
         return callService.save(callDto);
     }
 
-
+    @PostMapping("/delivered")
+    private ResponseEntity<String> saveUser(@Valid @RequestBody UserDto userDto)
+    {
+        return callService.resetNotNotifiedCallCount(userDto);
+    }
 }

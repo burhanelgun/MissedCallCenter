@@ -10,8 +10,7 @@ public interface CallService {
 
     ResponseEntity<CallDto> save(CallDto callDto);
 
-    List<CallDto> findCalledListByPhone(String calledPhone);
+    List<CallDto> findMissedCalledListByPhone(String calledPhone);
 
-
-
+    ResponseEntity<String> resetNotNotifiedCallCount(UserDto userDto);
 }

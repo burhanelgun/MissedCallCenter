@@ -26,7 +26,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void sendNotification(String username) {
-        List<CallDto> callerCallDtoList= callService.findCalledListByPhone(username);
+        List<CallDto> callerCallDtoList= callService.findMissedCalledListByPhone(username);
 
         if(callerCallDtoList!=null && callerCallDtoList.size()>0){
             String content=prepareNotificationContent(callerCallDtoList);

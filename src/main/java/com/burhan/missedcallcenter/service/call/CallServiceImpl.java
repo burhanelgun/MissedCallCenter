@@ -64,18 +64,45 @@ public class CallServiceImpl implements CallService{
     }
 
     @Override
-    public List<CallDto> findCalledListByPhone(String calledPhone) {
+    public List<CallDto> findMissedCalledListByPhone(String calledPhone) {
 
         Optional<List<CallEntity>> callEntitiesOpt = callRepository
                 .findAllByCalledPhone(calledPhone);
 
         List<CallEntity> callEntities;
         if(callEntitiesOpt.isPresent()){
+            List<CallDto> callDtoList = new ArrayList<>();
+
             callEntities = callEntitiesOpt.get();
-            return callMapper.entityListToDtoList(callEntities);
+
+            for(CallEntity callEntity:callEntities){
+                //if every missed call have already notified to user, do not notify again
+                if(callEntity.getNotNotifiedCallCount()!=0){
+                    callDtoList.add(callMapper.entityToDto(callEntity));
+                }
+            }
+            return callDtoList;
         }
 
         return null;
+    }
+
+    @Override
+    public ResponseEntity<String> resetNotNotifiedCallCount(UserDto userDto) {
+        Optional<List<CallEntity>> callEntitiesOpt = callRepository
+                .findAllByCalledPhone(userDto.getPhone());
+
+        List<CallEntity> callEntities;
+        if (callEntitiesOpt.isPresent()) {
+
+            callEntities = callEntitiesOpt.get();
+            //reset missed call notification count
+            for (CallEntity callEntity : callEntities) {
+                callEntity.setNotNotifiedCallCount(0);
+            }
+            callRepository.saveAll(callEntities);
+        }
+        return ResponseEntity.ok("Report is successfully processed");
     }
 
 
