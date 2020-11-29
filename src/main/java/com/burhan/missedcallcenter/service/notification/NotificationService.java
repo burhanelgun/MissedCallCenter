@@ -1,9 +1,13 @@
 package com.burhan.missedcallcenter.service.notification;
 
-import com.burhan.missedcallcenter.dto.NotificationDto;
+import com.burhan.missedcallcenter.dto.CallDto;
+
+import java.util.List;
 
 public interface NotificationService {
 
-    public void sendNotification(String username);
+    void sendNotification(String username);
+
+    String prepareNotificationContent(List<CallDto> callerCallDtoList);
 
 }

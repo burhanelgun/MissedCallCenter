@@ -10,6 +10,8 @@ import com.burhan.missedcallcenter.repository.CallRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -54,10 +56,27 @@ public class CallServiceImpl implements CallService{
             callEntity.setCallerUserEntity(callerUserEntity);
             callEntity.setCalledPhone(callDto.getCalledPhone());
 
-            callEntity.setNotNotifiedCallCount(0);
+            callEntity.setNotNotifiedCallCount(1);
         }
         callRepository.save(callEntity);
         return ResponseEntity.ok(callDto);
 
     }
+
+    @Override
+    public List<CallDto> findCalledListByPhone(String calledPhone) {
+
+        Optional<List<CallEntity>> callEntitiesOpt = callRepository
+                .findAllByCalledPhone(calledPhone);
+
+        List<CallEntity> callEntities;
+        if(callEntitiesOpt.isPresent()){
+            callEntities = callEntitiesOpt.get();
+            return callMapper.entityListToDtoList(callEntities);
+        }
+
+        return null;
+    }
+
+
 }

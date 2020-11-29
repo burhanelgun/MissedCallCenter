@@ -6,6 +6,9 @@ import com.burhan.missedcallcenter.entity.CallEntity;
 import com.burhan.missedcallcenter.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CallMapper {
 
@@ -33,5 +36,22 @@ public class CallMapper {
         callEntity.setNotNotifiedCallCount(callDto.getNotNotifiedCallCount());
 
         return callEntity;
+    }
+
+
+    public List<CallEntity> dtoListToEntityList(List<CallDto> callDtoList){
+        List<CallEntity> callEntityList = new ArrayList<>();
+        for(CallDto callDto:callDtoList){
+            callEntityList.add(dtoToEntity(callDto));
+        }
+        return callEntityList;
+    }
+
+    public List<CallDto> entityListToDtoList(List<CallEntity> callEntityList){
+        List<CallDto> callDtoList = new ArrayList<>();
+        for(CallEntity callEntity:callEntityList){
+            callDtoList.add(entityToDto(callEntity));
+        }
+        return callDtoList;
     }
 }

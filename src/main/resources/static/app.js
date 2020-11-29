@@ -23,10 +23,9 @@ function connect() {
             setConnected(true);
             console.log('Connected: ' + frame);
             stompClient.subscribe('/user/'+document.getElementById("login").value+'/queue/reply', function(greeting) {
-                showGreeting(JSON.parse(greeting.body).content);
+                showGreeting(JSON.parse(greeting.body).message);
 
             });
-            console.log("denemelerrrrr");
             sendName();
 
         });

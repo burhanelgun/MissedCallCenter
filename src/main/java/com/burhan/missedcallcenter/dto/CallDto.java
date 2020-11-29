@@ -10,5 +10,8 @@ public class CallDto {
     private String calledPhone;
     private int notNotifiedCallCount;
 
-
+    @Override
+    public String toString(){
+        return callerUserDto.getPhone()+" "+notNotifiedCallCount+"\n";
+    }
 }
