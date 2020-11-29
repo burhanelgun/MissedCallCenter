@@ -6,5 +6,5 @@ public interface MessageGeneratorService {
 
     String generateMessageForAvailableNotification(CallEntity callEntity);
 
-    String generateMessageForMissedCallNotification(String name);
+    String generateMessageForMissedCallNotification(String phone);
 }

@@ -14,10 +14,10 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public void sendNotification(String username, String message) {
+    public void sendNotification(String phone, String message) {
         NotificationDto notificationDto = new NotificationDto();
         notificationDto.setMessage(message);
-        messagingTemplate.convertAndSendToUser(username, "/queue/reply", notificationDto);
+        messagingTemplate.convertAndSendToUser(phone, "/queue/reply", notificationDto);
     }
 
 }

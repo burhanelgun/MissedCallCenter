@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data
-public class CallDto {
+public class ResponseCallDto {
 
     private Long id;
     private UserDto callerUserDto;

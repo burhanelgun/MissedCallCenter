@@ -1,6 +1,6 @@
 package com.burhan.missedcallcenter.mapper;
 
-import com.burhan.missedcallcenter.dto.CallDto;
+import com.burhan.missedcallcenter.dto.ResponseCallDto;
 import com.burhan.missedcallcenter.entity.CallEntity;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +16,8 @@ public class CallMapper {
         this.userMapper = userMapper;
     }
 
-    public CallDto entityToDto(CallEntity callEntity) {
-        CallDto callDto = new CallDto();
+    public ResponseCallDto entityToDto(CallEntity callEntity) {
+        ResponseCallDto callDto = new ResponseCallDto();
         callDto.setId(callEntity.getId());
         callDto.setCallerUserDto(userMapper.entityToDto(callEntity.getCallerUserEntity()));
         callDto.setCalledPhone(callEntity.getCalledPhone());
@@ -27,7 +27,7 @@ public class CallMapper {
         return callDto;
     }
 
-    public CallEntity dtoToEntity(CallDto callDto) {
+    public CallEntity dtoToEntity(ResponseCallDto callDto) {
         CallEntity callEntity = new CallEntity();
         callEntity.setId(callDto.getId());
         callEntity.setCallerUserEntity(userMapper.dtoToEntity(callDto.getCallerUserDto()));
@@ -39,16 +39,16 @@ public class CallMapper {
     }
 
 
-    public List<CallEntity> dtoListToEntityList(List<CallDto> callDtoList) {
+    public List<CallEntity> dtoListToEntityList(List<ResponseCallDto> callDtoList) {
         List<CallEntity> callEntityList = new ArrayList<>();
-        for (CallDto callDto : callDtoList) {
+        for (ResponseCallDto callDto : callDtoList) {
             callEntityList.add(dtoToEntity(callDto));
         }
         return callEntityList;
     }
 
-    public List<CallDto> entityListToDtoList(List<CallEntity> callEntityList) {
-        List<CallDto> callDtoList = new ArrayList<>();
+    public List<ResponseCallDto> entityListToDtoList(List<CallEntity> callEntityList) {
+        List<ResponseCallDto> callDtoList = new ArrayList<>();
         for (CallEntity callEntity : callEntityList) {
             callDtoList.add(entityToDto(callEntity));
         }

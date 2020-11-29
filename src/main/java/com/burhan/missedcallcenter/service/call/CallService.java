@@ -1,15 +1,15 @@
 package com.burhan.missedcallcenter.service.call;
 
-import com.burhan.missedcallcenter.dto.CallDto;
-import com.burhan.missedcallcenter.dto.CreateCallDto;
+import com.burhan.missedcallcenter.dto.ResponseCallDto;
+import com.burhan.missedcallcenter.dto.RequestCallDto;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface CallService {
 
-    ResponseEntity<CallDto> save(CreateCallDto callDto);
+    ResponseEntity<ResponseCallDto> save(RequestCallDto createCallDto);
 
-    List<CallDto> findMissedCalledListByPhone(String calledPhone);
+    List<ResponseCallDto> findMissedCalledListByPhone(String calledPhone);
 
 }

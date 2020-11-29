@@ -1,7 +1,7 @@
 package com.burhan.missedcallcenter.service.call;
 
-import com.burhan.missedcallcenter.dto.CallDto;
-import com.burhan.missedcallcenter.dto.CreateCallDto;
+import com.burhan.missedcallcenter.dto.ResponseCallDto;
+import com.burhan.missedcallcenter.dto.RequestCallDto;
 import com.burhan.missedcallcenter.entity.CallEntity;
 import com.burhan.missedcallcenter.entity.UserEntity;
 import com.burhan.missedcallcenter.mapper.CallMapper;
@@ -33,7 +33,7 @@ public class CallServiceImpl implements CallService {
     }
 
     @Override
-    public ResponseEntity<CallDto> save(CreateCallDto createCallDto) {
+    public ResponseEntity<ResponseCallDto> save(RequestCallDto createCallDto) {
 
         if (createCallDto.getCallerUserDto().getPhone() == null) {
             //TO DO print error message
@@ -69,14 +69,14 @@ public class CallServiceImpl implements CallService {
     }
 
     @Override
-    public List<CallDto> findMissedCalledListByPhone(String calledPhone) {
+    public List<ResponseCallDto> findMissedCalledListByPhone(String calledPhone) {
 
         Optional<List<CallEntity>> callEntitiesOpt = callRepository
                 .findAllByCalledPhone(calledPhone);
 
         List<CallEntity> callEntities;
         if (callEntitiesOpt.isPresent()) {
-            List<CallDto> callDtoList = new ArrayList<>();
+            List<ResponseCallDto> callDtoList = new ArrayList<>();
 
             callEntities = callEntitiesOpt.get();
 
