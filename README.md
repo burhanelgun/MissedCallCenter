@@ -25,24 +25,28 @@ Connect websocket and get messages (Implicitly)
 ### Create a user
 For creating a new user: Send POST request to http://localhost:8085/saveUser URL
 By providing a JSON simular to this:
+```JSON
 {
     "name":"mehmet",
     "password":"123456"
 }
-
+```
 
 ### Save phone
 Saving a phone for a created user: Send POST request to http://localhost:8085/savePhone URL
 By providing a JSON simular to this: (The id have to be same with id of respond of saveUser endpoint.)
+```JSON
 {
     "id": 1,
     "name": "mehmet",
     "phone": "99999999999"
 }
+```
 
 ### Call phone
 Calling a phone number: Send POST request to http://localhost:8085/call URL
 By providing a JSON simular to this: (The id have to be same with id of respond of saveUser endpoint.)
+```JSON
 {
   "calledPhone": "88888888888",
   "callerUserDto": {
@@ -51,14 +55,17 @@ By providing a JSON simular to this: (The id have to be same with id of respond 
     "phone": "99999999999"
    }
 }
+```
 Note: calledPhone => Aranan Numara, callerUserDto => Arayan User
 
 ### Send Delivery Report 
 Calling a phone number: Send POST request to http://localhost:8085/call URL
 By providing a JSON simular to this: (The id have to be same with id of respond of saveUser endpoint.)
+```JSON
 {
     "id": 1,
     "name": "mehmet",
     "phone": "99999999999"
 }
+```
 
