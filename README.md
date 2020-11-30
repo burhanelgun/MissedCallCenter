@@ -78,7 +78,7 @@ Sample JSON request: (The id have to be same with id of respond of saveUser endp
 ```
 ## Example use case
 **1.User A Saves Itself To The System By Rest API and Saves Phone To The System**<br />
- * ![alt text](https://user-images.githubusercontent.com/23100256/100641262-49938a80-3348-11eb-9609-7c5cba632c85.png)
+ * <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100641262-49938a80-3348-11eb-9609-7c5cba632c85.png)</kbd>
  * ![alt text](https://user-images.githubusercontent.com/23100256/100641395-78116580-3348-11eb-94c1-5a1107320038.png)
 <br /><br />
 **2. User A Creates Websocket Connection With Server**<br />
