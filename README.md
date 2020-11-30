@@ -1,5 +1,5 @@
 # Missed Call Center App
-This app was developped for handling missed calls to send notification of related users using websocket.
+This app has been developped for handling missed calls to send notification of related users using websocket.
 
 ## How to Run Project
 1. Install the repo and checkout to master branch
