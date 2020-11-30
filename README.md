@@ -18,12 +18,13 @@ This app has been developped for handling missed calls to send notification of r
 
 
 ## Usage
-A user can do 5 things with using this project.
-* Creating a user (Explicitly) - http://localhost:8085/saveUser - POST request
-* Saving a phone number (Explicitly) - http://localhost:8085/savePhone - POST request
-* Callling a phone number (Explicitly) - http://localhost:8085/call - POST request
-* Sending delivery report (Explicitly) - http://localhost:8085/deliveryReport - POST request
-* Connecting websocket and getting notifications (Implicitly)
+A user can do 6 things with using this project.
+* Creating a user (Explicitly) - http://localhost:8085/saveUser - by POST request
+* Saving a phone number (Explicitly) - http://localhost:8085/savePhone - by POST request
+* Callling a phone number (Explicitly) - http://localhost:8085/call - by POST request
+* Sending delivery report (Explicitly) - http://localhost:8085/deliveryReport - by POST request
+* Connecting websocket (Explicitly) - http://localhost:8085 - by Providing User Itself Phone and Clicking Connect Button
+* Getting notifications from websocket (Implicitly) - http://localhost:8085 
 
 ### Create a user
 For creating a new user: Send POST request to http://localhost:8085/saveUser URL
