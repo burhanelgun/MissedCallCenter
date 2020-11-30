@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import java.security.Principal;
 
 @Controller
-public class SocketController {
+public class WebSocketController {
 
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
@@ -18,13 +18,13 @@ public class SocketController {
     NotificationService notificationService;
     MessageGeneratorService messageGeneratorService;
 
-    SocketController(NotificationService notificationService, MessageGeneratorService messageGeneratorService) {
+    WebSocketController(NotificationService notificationService, MessageGeneratorService messageGeneratorService) {
         this.messageGeneratorService = messageGeneratorService;
         this.notificationService = notificationService;
     }
 
     @MessageMapping("/connect")
-    public void connect(Principal principal) throws Exception {
+    public void connect(Principal principal)  {
         String notificationMessage = messageGeneratorService.generateMessageForMissedCallNotification(principal.getName());
         notificationService.sendNotification(principal.getName(), notificationMessage);
     }

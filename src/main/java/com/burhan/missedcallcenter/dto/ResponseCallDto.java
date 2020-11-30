@@ -15,12 +15,4 @@ public class ResponseCallDto {
     private Date callDate;
     private int notNotifiedCallCount;
 
-    @Override
-    public String toString() {
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM hh:ss");
-        String formattedDate= dateFormat.format(callDate);
-        return callerUserDto.getPhone() + " " +formattedDate + " " + notNotifiedCallCount + "\n";
-    }
-
-
 }

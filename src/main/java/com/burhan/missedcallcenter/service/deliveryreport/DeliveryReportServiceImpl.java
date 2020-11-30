@@ -47,7 +47,9 @@ public class DeliveryReportServiceImpl implements DeliveryReportService {
         }
 
         //send available notification
-        sendAvailableNotification(callerEntities);
+        if(callerEntities!=null){
+            sendAvailableNotification(callerEntities);
+        }
 
 
         return ResponseEntity.ok("Delivery report was successfully processed.");
