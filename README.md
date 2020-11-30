@@ -120,6 +120,3 @@ Sample JSON request: (The id have to be same with id of respond of saveUser endp
 ```
 User name:sa
 Password:password```
-
-
-
