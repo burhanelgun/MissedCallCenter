@@ -19,7 +19,7 @@ public class MissedCallNotificationMessageDto {
 
         StringBuilder stringBuilder = new StringBuilder();
         DateFormat dateFormat = new SimpleDateFormat(dateFormatStr);
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+3"));
 
         if (language.equals("Turkish")) {
             stringBuilder.append("Sizi arayan numaralar: ");

@@ -20,7 +20,7 @@ public class AvailableNotificationMessageDto {
 
         DateFormat dateFormat = new SimpleDateFormat(dateFormatStr);
         String messageDate = dateFormat.format(callDate);
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+3"));
 
         if (language.equals("Turkish")) {
             return messageDate + " tarihinde aradığınız " + calledNumber + " şu anda uygun";
