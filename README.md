@@ -2,10 +2,10 @@
 This app has been developped for handling missed calls to send notification of related users using websocket.
 
 ## How to Run Project
-1. Clone this repository in to your local
-2. Open a command line prompt in the root directory of the local repository
-3. Run command  ./mvnw install dockerfile:build
-4. Run command  docker run -p 8085:8081 -t missedcallcenter/missedcallcenter
+1. Clone this repository in to your local machine
+2. Open a command prompt in the root directory of the local repository
+3. Run command  ```./mvnw install dockerfile:build```
+4. Run command  ```docker run -p 8085:8081 -t missedcallcenter/missedcallcenter```
 5. The project will up and running on http://localhost:8085/
 
 ## Enpoints
