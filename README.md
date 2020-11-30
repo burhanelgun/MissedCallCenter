@@ -27,9 +27,9 @@ A user can do 6 things with using this project.
 * Getting notifications from websocket (Implicitly) - http://localhost:8085 
 
 ### Create a user
-For creating a new user: Send POST request to http://localhost:8085/saveUser URL
+For creating a new user: Send POST request to http://localhost:8085/saveUser
 
-By providing a JSON simular to this:
+Sample JSON request:
 ```JSON
 {
     "name":"Mehmet",
@@ -38,9 +38,9 @@ By providing a JSON simular to this:
 ```
 
 ### Save phone
-Saving a phone for a created user: Send POST request to http://localhost:8085/savePhone URL
+Saving a phone for a created user: Send POST request to http://localhost:8085/savePhone
 
-By providing a JSON simular to this: (The id have to be same with id of respond of saveUser endpoint.)
+Sample JSON request: (The id have to be same with id of respond of saveUser endpoint.)
 ```JSON
 {
     "id": 1,
@@ -50,9 +50,9 @@ By providing a JSON simular to this: (The id have to be same with id of respond 
 ```
 
 ### Call phone
-Calling a phone number: Send POST request to http://localhost:8085/call URL
+Calling a phone number: Send POST request to http://localhost:8085/call
 
-By providing a JSON simular to this: (The id have to be same with id of respond of saveUser endpoint.)
+Sample JSON request: (The id have to be same with id of respond of saveUser endpoint.)
 ```JSON
 {
   "calledPhone": "88888888888",
@@ -66,9 +66,9 @@ By providing a JSON simular to this: (The id have to be same with id of respond 
 Note: calledPhone => Aranan Numara, callerUserDto => Arayan User
 
 ### Send Delivery Report 
-Calling a phone number: Send POST request to http://localhost:8085/call URL
+Calling a phone number: Send POST request to http://localhost:8085/call
 
-By providing a JSON simular to this: (The id have to be same with id of respond of saveUser endpoint.)
+Sample JSON request: (The id have to be same with id of respond of saveUser endpoint.)
 ```JSON
 {
     "id": 1,
