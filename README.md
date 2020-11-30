@@ -16,7 +16,7 @@ This app has been developped for handling missed calls to send notification of r
 
 ## Usage
 A user can do 5 things with using this project.
-* Creating a user - Over Rest API - http://localhost:8085/saveUser - POST request
+* Creating a user (Explicitly) - http://localhost:8085/saveUser - POST request
 * Saving a phone number (Explicitly) - http://localhost:8085/savePhone - POST request
 * Callling a phone number (Explicitly) - http://localhost:8085/call - POST request
 * Sending delivery report (Explicitly) - http://localhost:8085/deliveryReport - POST request
