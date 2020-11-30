@@ -5,6 +5,7 @@ import lombok.Data;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 @Data
 public class AvailableNotificationMessageDto {
@@ -19,6 +20,8 @@ public class AvailableNotificationMessageDto {
 
         DateFormat dateFormat = new SimpleDateFormat(dateFormatStr);
         String messageDate = dateFormat.format(callDate);
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+
         if (language.equals("Turkish")) {
             return messageDate + " tarihinde aradığınız " + calledNumber + " şu anda uygun";
         } else {

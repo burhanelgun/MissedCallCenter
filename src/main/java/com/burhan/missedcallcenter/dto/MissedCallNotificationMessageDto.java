@@ -5,6 +5,7 @@ import lombok.Data;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.TimeZone;
 
 @Data
 public class MissedCallNotificationMessageDto {
@@ -18,6 +19,7 @@ public class MissedCallNotificationMessageDto {
 
         StringBuilder stringBuilder = new StringBuilder();
         DateFormat dateFormat = new SimpleDateFormat(dateFormatStr);
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         if (language.equals("Turkish")) {
             stringBuilder.append("Sizi arayan numaralar: ");
