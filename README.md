@@ -23,7 +23,7 @@ A user can do 6 things with using this project.
 * Saving a phone number (Explicitly) - http://localhost:8085/savePhone - by POST request
 * Callling a phone number (Explicitly) - http://localhost:8085/call - by POST request
 * Sending delivery report (Explicitly) - http://localhost:8085/deliveryReport - by POST request
-* Connecting websocket (Explicitly) - http://localhost:8085 - by Providing User Itself Phone and Clicking Connect Button
+* Connecting websocket (Explicitly) - http://localhost:8085 - by Providing User Phone and Clicking Connect Button
 * Getting notifications from websocket (Implicitly) - http://localhost:8085 
 
 ### Create a user
