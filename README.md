@@ -73,7 +73,7 @@ Sample JSON request: (The id have to be same with id of respond of saveUser endp
 Note: calledPhone => Aranan Numara, callerUserDto => Arayan User
 
 ### Send Delivery Report 
-Calling a phone number: Send POST request to http://localhost:8085/call
+Calling a phone number: Send POST request to http://localhost:8085/deliveryReport
 
 Sample JSON request: (The id have to be same with id of respond of saveUser endpoint.)
 ```JSON
