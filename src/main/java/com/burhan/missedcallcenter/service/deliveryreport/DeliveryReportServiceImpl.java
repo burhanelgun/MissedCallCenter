@@ -46,7 +46,7 @@ public class DeliveryReportServiceImpl implements DeliveryReportService {
             callRepository.saveAll(callerEntities);
         }
 
-        //send available notification
+        //send available notification if there was a caller for the userDto
         if(callerEntities!=null){
             sendAvailableNotification(callerEntities);
         }
