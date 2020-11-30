@@ -17,12 +17,11 @@ public class AvailableNotificationMessageDto {
     public String toString() {
 
         DateFormat dateFormat = new SimpleDateFormat("dd.MM hh:mm");
-        String messageDate= dateFormat.format(callDate);
-        if(language.equals("Turkish")){
+        String messageDate = dateFormat.format(callDate);
+        if (language.equals("Turkish")) {
             return messageDate + " tarihinde aradığınız " + calledNumber + " şu anda uygun";
-        }
-        else{
-            return "The number you called" + " " + calledNumber + " at "+ messageDate+ " " + "is now available";
+        } else {
+            return "The number you called" + " " + calledNumber + " at " + messageDate + " " + "is now available";
         }
     }
 

@@ -45,21 +45,21 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
             @Override
             public Message<?> preSend(Message<?> message, MessageChannel channel) {
 
-            StompHeaderAccessor accessor =
-                    MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
+                StompHeaderAccessor accessor =
+                        MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
 
-            if (StompCommand.CONNECT.equals(accessor.getCommand())) {
-                String user = accessor.getFirstNativeHeader("user");
-                if (!StringUtils.isEmpty(user)) {
-                    List<GrantedAuthority> authorities = new ArrayList<>();
-                    authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-                    Authentication auth = new UsernamePasswordAuthenticationToken(user, user, authorities);
-                    SecurityContextHolder.getContext().setAuthentication(auth);
-                    accessor.setUser(auth);
+                if (StompCommand.CONNECT.equals(accessor.getCommand())) {
+                    String user = accessor.getFirstNativeHeader("user");
+                    if (!StringUtils.isEmpty(user)) {
+                        List<GrantedAuthority> authorities = new ArrayList<>();
+                        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+                        Authentication auth = new UsernamePasswordAuthenticationToken(user, user, authorities);
+                        SecurityContextHolder.getContext().setAuthentication(auth);
+                        accessor.setUser(auth);
+                    }
                 }
-            }
 
-            return message;
+                return message;
             }
         });
     }

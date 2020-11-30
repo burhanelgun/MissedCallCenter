@@ -18,13 +18,12 @@ public class MissedCallNotificationMessageDto {
         StringBuilder stringBuilder = new StringBuilder();
         DateFormat dateFormat = new SimpleDateFormat("dd.MM hh:mm");
 
-        if(language.equals("Turkish")){
+        if (language.equals("Turkish")) {
             stringBuilder.append("Sizi arayan numaralar: ");
-        }
-        else{
+        } else {
             stringBuilder.append("Missed calls: ");
         }
-        for(ResponseCallDto responseCallDto:responseCallDtoList){
+        for (ResponseCallDto responseCallDto : responseCallDtoList) {
             stringBuilder.append(responseCallDto.getCallerUserDto().getPhone());
             stringBuilder.append(" ");
             String formattedDate = dateFormat.format(responseCallDto.getCallDate());

@@ -2,7 +2,6 @@ package com.burhan.missedcallcenter.controller;
 
 import com.burhan.missedcallcenter.service.messagegenerator.MessageGeneratorService;
 import com.burhan.missedcallcenter.service.notification.NotificationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
@@ -24,9 +23,9 @@ public class WebSocketController {
     }
 
     @MessageMapping("/connect")
-    public void connect(Principal principal)  {
+    public void connect(Principal principal) {
         String notificationMessage = messageGeneratorService.generateMessageForMissedCallNotification(principal.getName());
         notificationService.sendNotification(principal.getName(), notificationMessage);
     }
-    
+
 }

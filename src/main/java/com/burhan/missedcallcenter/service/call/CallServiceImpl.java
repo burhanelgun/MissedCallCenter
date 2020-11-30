@@ -1,7 +1,7 @@
 package com.burhan.missedcallcenter.service.call;
 
-import com.burhan.missedcallcenter.dto.ResponseCallDto;
 import com.burhan.missedcallcenter.dto.RequestCallDto;
+import com.burhan.missedcallcenter.dto.ResponseCallDto;
 import com.burhan.missedcallcenter.entity.CallEntity;
 import com.burhan.missedcallcenter.entity.UserEntity;
 import com.burhan.missedcallcenter.mapper.CallMapper;
@@ -9,6 +9,7 @@ import com.burhan.missedcallcenter.mapper.UserMapper;
 import com.burhan.missedcallcenter.repository.CallRepository;
 import com.burhan.missedcallcenter.service.notification.NotificationService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -35,11 +36,12 @@ public class CallServiceImpl implements CallService {
     }
 
     @Override
-    public ResponseEntity<ResponseCallDto> save(RequestCallDto createCallDto) {
+    public ResponseEntity save(RequestCallDto createCallDto) {
 
         if (createCallDto.getCallerUserDto().getPhone() == null) {
             //TO DO print error message
-            return ResponseEntity.badRequest().build(); //There is not a phone number for caller user
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body("Cannot call because caller user don't have a phone"); //there is not a phone number for caller user
         }
 
         Optional<CallEntity> callEntityOpt = callRepository
@@ -55,7 +57,7 @@ public class CallServiceImpl implements CallService {
             //update the call call date(last call date)
             callEntity.setCallDate(new Date());
             callEntity.setNotNotifiedCallCount(callEntity.getNotNotifiedCallCount() + 1);
-            log.info(callEntity.toString()+" was updated.");
+            log.info(callEntity.toString() + " was updated.");
 
         } else {
             //if there is not any call with input caller and called phone, then create and save new one
@@ -66,10 +68,10 @@ public class CallServiceImpl implements CallService {
             callEntity.setCalledPhone(createCallDto.getCalledPhone());
             callEntity.setCallDate(new Date());
             callEntity.setNotNotifiedCallCount(1);
-            log.info(callEntity.toString()+" was created.");
+            log.info(callEntity.toString() + " was created.");
         }
         callRepository.save(callEntity);
-        log.info(callEntity.toString()+" was saved.");
+        log.info(callEntity.toString() + " was saved.");
 
         return ResponseEntity.ok(callMapper.entityToDto(callEntity));
 

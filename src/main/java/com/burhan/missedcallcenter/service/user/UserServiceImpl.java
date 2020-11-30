@@ -23,24 +23,24 @@ public class UserServiceImpl implements UserService {
         this.userMapper = userMapper;
     }
 
-    public ResponseEntity<UserDto> saveUser(SignupDto signupDto) {
+    public ResponseEntity saveUser(SignupDto signupDto) {
         UserEntity userEntity = new UserEntity();
         userEntity.setName(signupDto.getName());
         userEntity.setPassword(signupDto.getPassword());
 
         UserEntity savedUserEntity = userRepository.save(userEntity);
-        log.info("User: "+savedUserEntity+ " was saved.");
+        log.info("User: " + savedUserEntity + " was saved.");
 
         return ResponseEntity.ok(userMapper.entityToDto(savedUserEntity));
     }
 
-    public ResponseEntity<UserDto> savePhone(UserDto userDto) {
+    public ResponseEntity savePhone(UserDto userDto) {
         Optional<UserEntity> userEntityOpt = userRepository.findById(userDto.getId());
         if (userEntityOpt.isPresent()) {
             UserEntity userEntity = userEntityOpt.get();
             userEntity.setPhone(userDto.getPhone());
             userRepository.save(userEntity);
-            log.info("Phone:  "+userDto.getPhone()+ " was saved for the user: "+ userEntity);
+            log.info("Phone:  " + userDto.getPhone() + " was saved for the user: " + userEntity);
             return ResponseEntity.ok(userDto);
         } else {
             return ResponseEntity.notFound().build();

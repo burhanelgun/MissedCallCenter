@@ -2,8 +2,6 @@ package com.burhan.missedcallcenter.dto;
 
 import lombok.Data;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data

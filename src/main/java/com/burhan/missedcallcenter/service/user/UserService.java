@@ -7,8 +7,8 @@ import org.springframework.http.ResponseEntity;
 
 public interface UserService {
 
-    ResponseEntity<UserDto> saveUser(SignupDto signupDto);
+    ResponseEntity saveUser(SignupDto signupDto);
 
-    ResponseEntity<UserDto> savePhone(UserDto userDto);
+    ResponseEntity savePhone(UserDto userDto);
 
 }

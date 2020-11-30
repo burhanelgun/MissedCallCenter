@@ -18,32 +18,32 @@ import java.util.List;
 
 public class AuthenticationProcessingFilter extends AbstractPreAuthenticatedProcessingFilter {
 
-	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
-		ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
 
-		HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
 
-		String user = httpRequest.getHeader("user");
-		String password = httpRequest.getHeader("password");
+        String user = httpRequest.getHeader("user");
+        String password = httpRequest.getHeader("password");
 
-		if(user != null && password != null) {
-			List<GrantedAuthority> authorities = new ArrayList<>();
-			authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, user, authorities);
-			SecurityContextHolder.getContext().setAuthentication(auth);
-		}
+        if (user != null && password != null) {
+            List<GrantedAuthority> authorities = new ArrayList<>();
+            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, user, authorities);
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        }
 
-		filterChain.doFilter(servletRequest, servletResponse);
-	}
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
 
-	@Override
-	protected Object getPreAuthenticatedPrincipal(HttpServletRequest httpServletRequest) {
-		return null;
-	}
+    @Override
+    protected Object getPreAuthenticatedPrincipal(HttpServletRequest httpServletRequest) {
+        return null;
+    }
 
-	@Override
-	protected Object getPreAuthenticatedCredentials(HttpServletRequest httpServletRequest) {
-		return null;
-	}
+    @Override
+    protected Object getPreAuthenticatedCredentials(HttpServletRequest httpServletRequest) {
+        return null;
+    }
 }

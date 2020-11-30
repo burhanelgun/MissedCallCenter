@@ -17,11 +17,11 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void sendNotification(String phone, String message) {
-        if(message!=null && message.length()!=0){
+        if (message != null && message.length() != 0) {
             NotificationDto notificationDto = new NotificationDto();
             notificationDto.setMessage(message);
             messagingTemplate.convertAndSendToUser(phone, "/queue/reply", notificationDto);
-            log.info("A notification was sent to user of: "+ phone+ ", with message:"+ message);
+            log.info("A notification was sent to user of: " + phone + ", with message:" + message);
         }
     }
 

@@ -32,7 +32,7 @@ public class MessageGeneratorServiceImpl implements MessageGeneratorService {
         availableNotificationMessageDto.setCalledNumber(callEntity.getCalledPhone());
         availableNotificationMessageDto.setCallDate(callEntity.getCallDate());
         availableNotificationMessageDto.setLanguage(appConfig.getLanguage());
-        log.info("An available notification message was generated for caller user: "+ callEntity.getCallerUserEntity());
+        log.info("An available notification message was generated for caller user: " + callEntity.getCallerUserEntity());
 
         return availableNotificationMessageDto.toString();
     }
@@ -40,17 +40,16 @@ public class MessageGeneratorServiceImpl implements MessageGeneratorService {
     @Override
     public String generateMessageForMissedCallNotification(String phone) {
         List<ResponseCallDto> callerCallDtoList = callService.findMissedCalledListByPhone(phone);
-        if(callerCallDtoList!=null && callerCallDtoList.size()>0){
+        if (callerCallDtoList != null && callerCallDtoList.size() > 0) {
             MissedCallNotificationMessageDto missedCallNotificationMessageDto = new MissedCallNotificationMessageDto();
             missedCallNotificationMessageDto.setResponseCallDtoList(callerCallDtoList);
             missedCallNotificationMessageDto.setLanguage(appConfig.getLanguage());
-            log.info("Missed call notification messages was generated for phone: "+ phone);
+            log.info("Missed call notification messages was generated for phone: " + phone);
 
-            return  missedCallNotificationMessageDto.toString();
+            return missedCallNotificationMessageDto.toString();
         }
         return null;
     }
-
 
 
 }

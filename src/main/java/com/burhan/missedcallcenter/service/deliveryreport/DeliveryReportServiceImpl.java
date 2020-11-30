@@ -32,7 +32,7 @@ public class DeliveryReportServiceImpl implements DeliveryReportService {
     }
 
     @Override
-    public ResponseEntity<String> deliverReport(UserDto userDto) {
+    public ResponseEntity deliverReport(UserDto userDto) {
 
         Optional<List<CallEntity>> callerEntitiesOpt = callRepository
                 .findAllByCalledPhone(userDto.getPhone());
@@ -50,7 +50,7 @@ public class DeliveryReportServiceImpl implements DeliveryReportService {
         }
 
         //send available notification if there was a caller for the userDto
-        if(callerEntities!=null){
+        if (callerEntities != null) {
             sendAvailableNotification(callerEntities);
         }
 
@@ -63,7 +63,7 @@ public class DeliveryReportServiceImpl implements DeliveryReportService {
         for (CallEntity callEntity : callerEntities) {
             String message = messageGeneratorService.generateMessageForAvailableNotification(callEntity);
             notificationService.sendNotification(callEntity.getCallerUserEntity().getPhone(), message);
-            log.info("Available notification was sent to user: "+ callEntity);
+            log.info("Available notification was sent to user: " + callEntity);
         }
     }
 }

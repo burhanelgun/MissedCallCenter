@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name="Call")
+@Table(name = "Call")
 public class CallEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
