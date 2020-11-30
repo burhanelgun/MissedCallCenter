@@ -16,6 +16,13 @@ This app has been developped for handling missed calls to send notification of r
 * H2 Console: http://localhost:8085/h2-console
 * Other Rest API enpoints can be seen on Swagger UI page.
 
+### Configuration
+You can change app language with English and Turkish and also you can change the date format. For setting these variables, simply set the app.language and app.dateFormat properties that located in application.properties file. For example:
+
+ ```
+app.language=Turkish
+app.dateFormat=dd.MM HH:mm
+ ```
 
 ## Usage
 A user can do 6 things with using this project.
@@ -25,6 +32,7 @@ A user can do 6 things with using this project.
 * Sending delivery report (Explicitly) - http://localhost:8085/deliveryReport - by POST request
 * Connecting websocket (Explicitly) - http://localhost:8085 - by Providing User Phone and Clicking Connect Button
 * Getting notifications from websocket (Implicitly) - http://localhost:8085 
+
 
 ### Create a user
 For creating a new user: Send POST request to http://localhost:8085/saveUser
@@ -102,8 +110,12 @@ Sample JSON request: (The id have to be same with id of respond of saveUser endp
 **7. User A Gets Available Notification About the User B(since it sent delivery report in part 6)**<br />
 <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100645528-d9880300-334d-11eb-8be9-4e99ee62d977.png)</kbd>
 
-
-
+**After the above 7 steps, the H2 database will look like this:**
+<kbd>![alt text](https://user-images.githubusercontent.com/23100256/100658382-02b18f00-3360-11eb-8055-349f0d39e3ce.png)</kbd>
+```Username:sa
+Password:password```
+<kbd>![alt text](https://user-images.githubusercontent.com/23100256/100660076-92583d00-3362-11eb-85cf-c866ef8dd638.png)</kbd>
+<kbd>![alt text](https://user-images.githubusercontent.com/23100256/100660160-adc34800-3362-11eb-8508-4639cacc780e.png)</kbd>
 
 
 
