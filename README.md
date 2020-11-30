@@ -16,7 +16,7 @@ This app has been developped for handling missed calls to send notification of r
 * H2 Console: http://localhost:8085/h2-console
 * Other Rest API enpoints can be seen on Swagger UI page.
 
-### Configuration
+## Configuration
 You can change app language with English and Turkish and also you can change the date format. For setting these variables, simply set the app.language and app.dateFormat properties that located in application.properties file. For example:
 
  ```
