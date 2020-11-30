@@ -119,4 +119,5 @@ Sample JSON request: (The id have to be same with id of respond of saveUser endp
 **H2 Database Console Credentials**
 ```
 User name:sa
-Password:password```
+Password:password
+```
