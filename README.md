@@ -5,9 +5,10 @@ This app has been developped for handling missed calls to send notification of r
 1. Install Docker Desktop and switch to Windows container
 2. Clone this repository in to your local machine
 3. Open a command prompt in the root directory of the local repository
-4. Run command  ```./mvnw install dockerfile:build```
-5. Run command  ```docker run -p 8085:8081 -t missedcallcenter/missedcallcenter```
-6. The project will up and running on http://localhost:8085/
+4. Checkout to ```master``` branch if not
+5. Run command  ```./mvnw install dockerfile:build```
+6. Run command  ```docker run -p 8085:8081 -t missedcallcenter/missedcallcenter```
+7. The project will up and running on http://localhost:8085/
 
 ## Enpoints
 * Websocket Client: http://localhost:8085/index.html
