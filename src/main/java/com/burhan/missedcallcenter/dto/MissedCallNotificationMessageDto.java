@@ -11,12 +11,13 @@ public class MissedCallNotificationMessageDto {
 
     private List<ResponseCallDto> responseCallDtoList;
     private String language;
+    private String dateFormatStr;
 
     @Override
     public String toString() {
 
         StringBuilder stringBuilder = new StringBuilder();
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM hh:mm");
+        DateFormat dateFormat = new SimpleDateFormat(dateFormatStr);
 
         if (language.equals("Turkish")) {
             stringBuilder.append("Sizi arayan numaralar: ");

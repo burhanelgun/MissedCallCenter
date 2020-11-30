@@ -10,4 +10,5 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Data
 public class AppConfig implements WebMvcConfigurer {
     private String language;
+    private String dateFormat;
 }

@@ -12,11 +12,12 @@ public class AvailableNotificationMessageDto {
     private String calledNumber;
     private Date callDate;
     private String language;
+    private String dateFormatStr;
 
     @Override
     public String toString() {
 
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM hh:mm");
+        DateFormat dateFormat = new SimpleDateFormat(dateFormatStr);
         String messageDate = dateFormat.format(callDate);
         if (language.equals("Turkish")) {
             return messageDate + " tarihinde aradığınız " + calledNumber + " şu anda uygun";

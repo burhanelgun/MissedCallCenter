@@ -32,6 +32,8 @@ public class MessageGeneratorServiceImpl implements MessageGeneratorService {
         availableNotificationMessageDto.setCalledNumber(callEntity.getCalledPhone());
         availableNotificationMessageDto.setCallDate(callEntity.getCallDate());
         availableNotificationMessageDto.setLanguage(appConfig.getLanguage());
+        availableNotificationMessageDto.setDateFormatStr(appConfig.getDateFormat());
+
         log.info("An available notification message was generated for caller user: " + callEntity.getCallerUserEntity());
 
         return availableNotificationMessageDto.toString();
@@ -44,6 +46,8 @@ public class MessageGeneratorServiceImpl implements MessageGeneratorService {
             MissedCallNotificationMessageDto missedCallNotificationMessageDto = new MissedCallNotificationMessageDto();
             missedCallNotificationMessageDto.setResponseCallDtoList(callerCallDtoList);
             missedCallNotificationMessageDto.setLanguage(appConfig.getLanguage());
+            missedCallNotificationMessageDto.setDateFormatStr(appConfig.getDateFormat());
+
             log.info("Missed call notification messages was generated for phone: " + phone);
 
             return missedCallNotificationMessageDto.toString();
