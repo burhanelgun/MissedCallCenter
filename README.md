@@ -110,12 +110,15 @@ Sample JSON request: (The id have to be same with id of respond of saveUser endp
 **7. User A Gets Available Notification About the User B(since it sent delivery report in part 6)**<br />
 <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100645528-d9880300-334d-11eb-8be9-4e99ee62d977.png)</kbd>
 
+### H2 Database
 **After the above 7 steps, the H2 database will look like this:**
-<kbd>![alt text](https://user-images.githubusercontent.com/23100256/100658382-02b18f00-3360-11eb-8055-349f0d39e3ce.png)</kbd>
-```Username:sa
+ * <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100658382-02b18f00-3360-11eb-8055-349f0d39e3ce.png)</kbd>
+ * <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100660076-92583d00-3362-11eb-85cf-c866ef8dd638.png)</kbd>
+ * <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100660160-adc34800-3362-11eb-8508-4639cacc780e.png)</kbd>
+**H2 Database Console Credentials**
+```
+User name:sa
 Password:password```
-<kbd>![alt text](https://user-images.githubusercontent.com/23100256/100660076-92583d00-3362-11eb-85cf-c866ef8dd638.png)</kbd>
-<kbd>![alt text](https://user-images.githubusercontent.com/23100256/100660160-adc34800-3362-11eb-8508-4639cacc780e.png)</kbd>
 
 
 
