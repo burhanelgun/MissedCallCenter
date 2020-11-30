@@ -13,6 +13,7 @@ This app has been developped for handling missed calls to send notification of r
 ## Enpoints
 * Websocket Client: http://localhost:8085/index.html
 * Swagger UI: http://localhost:8085/swagger-ui/index.html
+* H2 Console: http://localhost:8085/h2-console
 * Other Rest API enpoints can be seen on Swagger UI page.
 
 
