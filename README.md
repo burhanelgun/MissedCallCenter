@@ -5,10 +5,9 @@ This app has been developped for handling missed calls to send notification of r
 1. Install Docker Desktop and switch to Windows container
 2. Clone this repository in to your local machine
 3. Open a command prompt in the root directory of the local project repository
-4. Checkout to ```master``` branch if it is not
-5. Run command  ```./mvnw install dockerfile:build```
-6. Run command  ```docker run -p 8085:8081 -t missedcallcenter/missedcallcenter```
-7. The project will up and running on http://localhost:8085/
+4. Run command  ```./mvnw install dockerfile:build```
+5. Run command  ```docker run -p 8085:8081 -t missedcallcenter/missedcallcenter```
+6. The project will up and running on http://localhost:8085/
 
 ## Enpoints
 * Websocket Client: http://localhost:8085/index.html
@@ -28,7 +27,7 @@ app.dateFormat=dd.MM HH:mm
 A user can do 6 things with using this project.
 * Creating a user (Explicitly) - http://localhost:8085/saveUser - by POST request
 * Saving a phone number (Explicitly) - http://localhost:8085/savePhone - by POST request
-* Callling a phone number (Explicitly) - http://localhost:8085/call - by POST request
+* Calling a phone number (Explicitly) - http://localhost:8085/call - by POST request
 * Sending delivery report (Explicitly) - http://localhost:8085/deliveryReport - by POST request
 * Connecting websocket (Explicitly) - http://localhost:8085 - by Providing User Phone and Clicking Connect Button
 * Getting notifications from websocket (Implicitly) - http://localhost:8085 
