@@ -6,6 +6,7 @@ import com.burhan.missedcallcenter.mapper.CallMapper;
 import com.burhan.missedcallcenter.repository.CallRepository;
 import com.burhan.missedcallcenter.service.messagegenerator.MessageGeneratorService;
 import com.burhan.missedcallcenter.service.notification.NotificationService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class DeliveryReportServiceImpl implements DeliveryReportService {
 
     private CallRepository callRepository;
@@ -44,6 +46,7 @@ public class DeliveryReportServiceImpl implements DeliveryReportService {
                 callEntity.setNotNotifiedCallCount(0);
             }
             callRepository.saveAll(callerEntities);
+
         }
 
         //send available notification if there was a caller for the userDto
@@ -51,7 +54,7 @@ public class DeliveryReportServiceImpl implements DeliveryReportService {
             sendAvailableNotification(callerEntities);
         }
 
-
+        log.info("Delivery report was successfully processed for user: " + userDto);
         return ResponseEntity.ok("Delivery report was successfully processed.");
 
     }
@@ -60,6 +63,7 @@ public class DeliveryReportServiceImpl implements DeliveryReportService {
         for (CallEntity callEntity : callerEntities) {
             String message = messageGeneratorService.generateMessageForAvailableNotification(callEntity);
             notificationService.sendNotification(callEntity.getCallerUserEntity().getPhone(), message);
+            log.info("Available notification was sent to user: "+ callEntity);
         }
     }
 }

@@ -1,10 +1,12 @@
 package com.burhan.missedcallcenter.service.notification;
 
 import com.burhan.missedcallcenter.dto.NotificationDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class NotificationServiceImpl implements NotificationService {
 
     private SimpMessagingTemplate messagingTemplate;
@@ -19,6 +21,7 @@ public class NotificationServiceImpl implements NotificationService {
             NotificationDto notificationDto = new NotificationDto();
             notificationDto.setMessage(message);
             messagingTemplate.convertAndSendToUser(phone, "/queue/reply", notificationDto);
+            log.info("A notification was sent to user of: "+ phone+ ", with message:"+ message);
         }
     }
 

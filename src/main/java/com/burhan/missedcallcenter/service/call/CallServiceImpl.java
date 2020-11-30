@@ -8,6 +8,7 @@ import com.burhan.missedcallcenter.mapper.CallMapper;
 import com.burhan.missedcallcenter.mapper.UserMapper;
 import com.burhan.missedcallcenter.repository.CallRepository;
 import com.burhan.missedcallcenter.service.notification.NotificationService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class CallServiceImpl implements CallService {
 
     private CallRepository callRepository;
@@ -53,6 +55,8 @@ public class CallServiceImpl implements CallService {
             //update the call call date(last call date)
             callEntity.setCallDate(new Date());
             callEntity.setNotNotifiedCallCount(callEntity.getNotNotifiedCallCount() + 1);
+            log.info(callEntity.toString()+" was updated.");
+
         } else {
             //if there is not any call with input caller and called phone, then create and save new one
             callEntity = new CallEntity();
@@ -62,8 +66,11 @@ public class CallServiceImpl implements CallService {
             callEntity.setCalledPhone(createCallDto.getCalledPhone());
             callEntity.setCallDate(new Date());
             callEntity.setNotNotifiedCallCount(1);
+            log.info(callEntity.toString()+" was created.");
         }
         callRepository.save(callEntity);
+        log.info(callEntity.toString()+" was saved.");
+
         return ResponseEntity.ok(callMapper.entityToDto(callEntity));
 
     }
