@@ -116,7 +116,7 @@ H2 Database Console Credentials
 User name= sa
 Password= password
 ```
-**After the above 7 steps, the H2 database will look like this:**
+**After the above 7 steps of the example use case, the H2 database will look like this:**
  * <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100658382-02b18f00-3360-11eb-8055-349f0d39e3ce.png)</kbd>
  * <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100660076-92583d00-3362-11eb-85cf-c866ef8dd638.png)</kbd>
  * <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100660160-adc34800-3362-11eb-8508-4639cacc780e.png)</kbd>
