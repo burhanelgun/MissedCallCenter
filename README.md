@@ -99,7 +99,7 @@ Sample JSON request: (The id have to be same with id of respond of saveUser endp
 **6. User B Sends Delivery Report To The Sytem**<br />
 <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100645392-a9406480-334d-11eb-9c1d-4b955a26320d.png)</kbd>
 <br /><br />
-**7. User A Gets Available Notification About the User B(since it was sends delivery report in part 6)**<br />
+**7. User A Gets Available Notification About the User B(since it sent delivery report in part 6)**<br />
 <kbd>![alt text](https://user-images.githubusercontent.com/23100256/100645528-d9880300-334d-11eb-8be9-4e99ee62d977.png)</kbd>
 
 
