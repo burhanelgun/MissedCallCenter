@@ -9,9 +9,9 @@ import java.util.Date;
 @Data
 public class AvailableNotificationMessageDto {
 
-    String calledNumber;
-    Date callDate;
-    String language;
+    private String calledNumber;
+    private Date callDate;
+    private String language;
 
     @Override
     public String toString() {

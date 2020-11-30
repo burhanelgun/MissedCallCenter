@@ -14,9 +14,9 @@ import java.util.List;
 @Service
 public class MessageGeneratorServiceImpl implements MessageGeneratorService {
 
-    CallService callService;
-    MessageSource messageSource;
-    AppConfig appConfig;
+    private CallService callService;
+    private MessageSource messageSource;
+    private AppConfig appConfig;
 
     MessageGeneratorServiceImpl(CallService callService, MessageSource messageSource, AppConfig appConfig) {
         this.callService = callService;

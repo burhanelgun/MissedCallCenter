@@ -19,10 +19,10 @@ import java.util.Optional;
 @Service
 public class CallServiceImpl implements CallService {
 
-    CallRepository callRepository;
-    CallMapper callMapper;
-    UserMapper userMapper;
-    NotificationService notificationService;
+    private CallRepository callRepository;
+    private CallMapper callMapper;
+    private UserMapper userMapper;
+    private NotificationService notificationService;
 
     CallServiceImpl(CallRepository callRepository, CallMapper callMapper, UserMapper userMapper,
                     NotificationService notificationService) {

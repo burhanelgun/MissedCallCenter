@@ -12,7 +12,7 @@ import javax.validation.Valid;
 @Controller
 public class DeliveryReportController {
 
-    DeliveryReportService deliveryReportService;
+    private DeliveryReportService deliveryReportService;
 
     DeliveryReportController(DeliveryReportService deliveryReportService) {
         this.deliveryReportService = deliveryReportService;

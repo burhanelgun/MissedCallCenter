@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class CallMapper {
 
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     CallMapper(UserMapper userMapper) {
         this.userMapper = userMapper;

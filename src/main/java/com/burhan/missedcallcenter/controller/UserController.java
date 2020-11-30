@@ -15,7 +15,7 @@ import javax.validation.Valid;
 @RestController
 public class UserController {
 
-    UserService userService;
+    private UserService userService;
 
     UserController(UserService userService) {
         this.userService = userService;

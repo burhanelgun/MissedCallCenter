@@ -9,5 +9,5 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Component
 @Data
 public class AppConfig implements WebMvcConfigurer {
-    String language;
+    private String language;
 }

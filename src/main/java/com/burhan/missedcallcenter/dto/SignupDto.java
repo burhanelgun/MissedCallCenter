@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class SignupDto {
-    String name;
-    String password;
+    private String name;
+    private String password;
 }

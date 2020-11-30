@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class NotificationServiceImpl implements NotificationService {
 
-    SimpMessagingTemplate messagingTemplate;
+    private SimpMessagingTemplate messagingTemplate;
 
     NotificationServiceImpl(SimpMessagingTemplate messagingTemplate) {
         this.messagingTemplate = messagingTemplate;

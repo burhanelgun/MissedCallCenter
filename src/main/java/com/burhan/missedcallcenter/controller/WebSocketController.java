@@ -12,15 +12,15 @@ import java.security.Principal;
 @Controller
 public class WebSocketController {
 
-    @Autowired
     private SimpMessagingTemplate messagingTemplate;
+    private NotificationService notificationService;
+    private MessageGeneratorService messageGeneratorService;
 
-    NotificationService notificationService;
-    MessageGeneratorService messageGeneratorService;
-
-    WebSocketController(NotificationService notificationService, MessageGeneratorService messageGeneratorService) {
+    WebSocketController(NotificationService notificationService, MessageGeneratorService messageGeneratorService,
+                        SimpMessagingTemplate messagingTemplate) {
         this.messageGeneratorService = messageGeneratorService;
         this.notificationService = notificationService;
+        this.messagingTemplate = messagingTemplate;
     }
 
     @MessageMapping("/connect")
@@ -28,6 +28,5 @@ public class WebSocketController {
         String notificationMessage = messageGeneratorService.generateMessageForMissedCallNotification(principal.getName());
         notificationService.sendNotification(principal.getName(), notificationMessage);
     }
-
-
+    
 }

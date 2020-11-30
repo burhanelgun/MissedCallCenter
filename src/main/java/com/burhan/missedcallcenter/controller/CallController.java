@@ -14,8 +14,8 @@ import javax.validation.Valid;
 @RestController
 public class CallController {
 
-    CallService callService;
-    NotificationService notificationService;
+    private CallService callService;
+    private NotificationService notificationService;
 
     CallController(CallService callService, NotificationService notificationService) {
         this.callService = callService;

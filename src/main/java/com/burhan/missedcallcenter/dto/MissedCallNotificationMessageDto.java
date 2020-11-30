@@ -9,8 +9,8 @@ import java.util.List;
 @Data
 public class MissedCallNotificationMessageDto {
 
-    List<ResponseCallDto> responseCallDtoList;
-    String language;
+    private List<ResponseCallDto> responseCallDtoList;
+    private String language;
 
     @Override
     public String toString() {

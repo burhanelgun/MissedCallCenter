@@ -15,10 +15,10 @@ import java.util.Optional;
 @Service
 public class DeliveryReportServiceImpl implements DeliveryReportService {
 
-    CallRepository callRepository;
-    CallMapper callMapper;
-    NotificationService notificationService;
-    MessageGeneratorService messageGeneratorService;
+    private CallRepository callRepository;
+    private CallMapper callMapper;
+    private NotificationService notificationService;
+    private MessageGeneratorService messageGeneratorService;
 
 
     DeliveryReportServiceImpl(CallRepository callRepository, CallMapper callMapper, NotificationService notificationService

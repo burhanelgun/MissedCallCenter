@@ -13,8 +13,8 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    UserRepository userRepository;
-    UserMapper userMapper;
+    private UserRepository userRepository;
+    private UserMapper userMapper;
 
     UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
